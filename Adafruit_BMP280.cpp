@@ -272,3 +272,14 @@ float Adafruit_BMP280::readPressure(void) {
   p = ((p + var1 + var2) >> 8) + (((int64_t)bmp280_calib.dig_P7)<<4);
   return (float)p/256;
 }
+
+float Adafruit_BMP280::readAltitude(float seaLevelhPa) {
+  float altitude;
+
+  float pressure = readPressure(); // in Si units for Pascal
+  pressure /= 100;
+
+  altitude = 44330 * (1.0 - pow(pressure / seaLevelhPa, 0.1903));
+
+  return altitude;
+}

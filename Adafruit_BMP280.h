@@ -129,9 +129,7 @@ class Adafruit_BMP280
     bool  begin(uint8_t addr = BMP280_ADDRESS);
     float readTemperature(void);
     float readPressure(void);
-
-    //  float pressureToAltitude(float seaLevel, float atmospheric, float temp);
-    // float seaLevelForAltitude(float altitude, float atmospheric, float temp);
+    float readAltitude(float seaLevelhPa = 1013.25);
 
   private:
 
