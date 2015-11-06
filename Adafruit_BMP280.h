@@ -1,7 +1,7 @@
 /***************************************************************************
   This is a library for the BMP280 pressure sensor
 
-  Designed specifically to work with the Adafruit BMP280 Breakout 
+  Designed specifically to work with the Adafruit BMP280 Breakout
   ----> http://www.adafruit.com/products/2651
 
   These sensors use I2C to communicate, 2 pins are required to interface.
@@ -10,7 +10,7 @@
   please support Adafruit andopen-source hardware by purchasing products
   from Adafruit!
 
-  Written by Kevin Townsend for Adafruit Industries.  
+  Written by Kevin Townsend for Adafruit Industries.
   BSD license, all text above must be included in any redistribution
  ***************************************************************************/
 #ifndef __BMP280_H__
@@ -103,7 +103,7 @@ class Adafruit_BMP280_Unified : public Adafruit_Sensor
 {
   public:
     Adafruit_BMP280_Unified(int32_t sensorID = -1);
-  
+
     bool  begin(uint8_t addr = BMP280_ADDRESS);
     void  getTemperature(float *temp);
     void  getPressure(float *pressure);
@@ -148,6 +148,8 @@ class Adafruit_BMP280
     int32_t t_fine;
 
     int8_t _cs, _mosi, _miso, _sck;
+
+    bmp280_calib_data _bmp280_calib;
 
 };
 
