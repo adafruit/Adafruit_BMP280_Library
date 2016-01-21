@@ -139,6 +139,7 @@ class Adafruit_BMP280
     void      write8(byte reg, byte value);
     uint8_t   read8(byte reg);
     uint16_t  read16(byte reg);
+    uint32_t  read24(byte reg);
     int16_t   readS16(byte reg);
     uint16_t  read16_LE(byte reg); // little endian
     int16_t   readS16_LE(byte reg); // little endian
