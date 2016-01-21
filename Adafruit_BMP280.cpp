@@ -247,6 +247,9 @@ float Adafruit_BMP280::readTemperature(void)
 float Adafruit_BMP280::readPressure(void) {
   int64_t var1, var2, p;
 
+  // Must be done first to get the t_fine variable set up
+  readTemperature();
+
   int32_t adc_P = read16(BMP280_REGISTER_PRESSUREDATA);
   adc_P <<= 8;
   adc_P |= read8(BMP280_REGISTER_PRESSUREDATA+2);
