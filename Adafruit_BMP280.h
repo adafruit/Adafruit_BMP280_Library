@@ -130,8 +130,8 @@ class Adafruit_BMP280
     float readTemperature(void);
     float readPressure(void);
     float readAltitude(float seaLevelhPa = 1013.25);
-    float seaLevel(float pressure, float altitude);
-
+    float seaLevel(float pressure, float altitude, float temp);
+    
   private:
 
     void readCoefficients(void);

@@ -325,17 +325,23 @@ float Adafruit_BMP280::readAltitude(float seaLevelhPa) {
 
 
 
-/*--------------------------------
+/**************************************************************************/
+/*!
+ 
  sealevel
- args:
- returns pressure at sealevel depending on the  altitude of the pressure reading
- Usefull for weather related sketches
+ args:  pressure = barometric pressure
+        altitude = altitude in [m] of the pressure measurement
+        temp = current temp in [C]
+ 
+ returns pressure at sealevel depending on the altitude and temperature of the pressure reading
+ Usefull for weather related sketches. [kl-git, Jan 2016]
  
  mean sea level barometric pressure = 1013.25 [mbar]
- *--------------------------------*/
-float Adafruit_BMP280::seaLevel(float pressure, float altitude)
+ */
+/**************************************************************************/
+float Adafruit_BMP280::seaLevel(float pressure, float altitude, float temp)
 {
-    return pressure / pow(1-(altitude/44330.0),5.255);
+    return pressure * pow(temp/((temp + 273.15) / ( (temp + 273.15) + 0.0065 * altitude)),5.255);
 }
 
 
