@@ -31,6 +31,12 @@
  #include <Wire.h>
 #endif
 
+
+#define MBAR    (float)(100.0)
+#define PA      (float)(1.0)
+#define HPA     (float)(100.0)
+
+
 /*=========================================================================
     I2C ADDRESS/BITS
     -----------------------------------------------------------------------*/
@@ -125,6 +131,7 @@ class Adafruit_BMP280
     Adafruit_BMP280(void);
     Adafruit_BMP280(int8_t cspin);
     Adafruit_BMP280(int8_t cspin, int8_t mosipin, int8_t misopin, int8_t sckpin);
+    Adafruit_BMP280(float SI_UNITS);
 
     bool  begin(uint8_t addr = BMP280_ADDRESS);
     float readTemperature(void);
@@ -147,7 +154,8 @@ class Adafruit_BMP280
 
     uint8_t   _i2caddr;
     int32_t   _sensorID;
-    int32_t t_fine;
+    int32_t   t_fine;
+    float     _SI_unit_conversion = PA;
 
     int8_t _cs, _mosi, _miso, _sck;
 

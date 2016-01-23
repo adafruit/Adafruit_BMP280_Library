@@ -36,6 +36,10 @@ Adafruit_BMP280::Adafruit_BMP280(int8_t cspin, int8_t mosipin, int8_t misopin, i
   : _cs(cspin), _mosi(mosipin), _miso(misopin), _sck(sckpin)
 { }
 
+Adafruit_BMP280::Adafruit_BMP280(float SI_UNITS)
+: _cs(-1), _mosi(-1), _miso(-1), _sck(-1), _SI_unit_conversion(SI_UNITS)
+{ }
+
 
 bool Adafruit_BMP280::begin(uint8_t a) {
   _i2caddr = a;
@@ -288,7 +292,7 @@ float Adafruit_BMP280::readTemperature(void)
 float Adafruit_BMP280::readPressure(void) {
   int64_t var1, var2, p;
 
-  // Must be done first to get the t_fine variable set up
+    // Must be done first to get the t_fine variable set up
   readTemperature();
 
   int32_t adc_P = read24(BMP280_REGISTER_PRESSUREDATA);
@@ -311,8 +315,10 @@ float Adafruit_BMP280::readPressure(void) {
   var2 = (((int64_t)_bmp280_calib.dig_P8) * p) >> 19;
 
   p = ((p + var1 + var2) >> 8) + (((int64_t)_bmp280_calib.dig_P7)<<4);
-  return (float)p/256;
+
+  return ((float)(p >> 8)) / _SI_unit_conversion;            // converts to [mbar] or [hPa] it needed
 }
+
 
 float Adafruit_BMP280::readAltitude(float seaLevelhPa) {
 
@@ -327,8 +333,8 @@ float Adafruit_BMP280::readAltitude(float seaLevelhPa) {
 
 /**************************************************************************/
 /*!
- 
  sealevel
+ 
  args:  pressure = barometric pressure
         altitude = altitude in [m] of the pressure measurement
         temp = current temp in [C]
@@ -337,11 +343,14 @@ float Adafruit_BMP280::readAltitude(float seaLevelhPa) {
  Usefull for weather related sketches. [kl-git, Jan 2016]
  
  mean sea level barometric pressure = 1013.25 [mbar]
+ see: https://de.wikipedia.org/wiki/Barometrische_Höhenformel
+ 
  */
 /**************************************************************************/
 float Adafruit_BMP280::seaLevel(float pressure, float altitude, float temp)
 {
-    return pressure * pow(temp/((temp + 273.15) / ( (temp + 273.15) + 0.0065 * altitude)),5.255);
+    temp += 273.15;     // convert [C] into [K]
+    return pressure * pow(temp / (temp + 0.0065 * altitude),-5.255);
 }
 
 
