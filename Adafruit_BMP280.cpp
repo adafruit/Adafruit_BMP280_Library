@@ -315,12 +315,27 @@ float Adafruit_BMP280::readPressure(void) {
 }
 
 float Adafruit_BMP280::readAltitude(float seaLevelhPa) {
-  float altitude;
 
   float pressure = readPressure(); // in Si units for Pascal
-  pressure /= 100;
+  pressure /= 100;                 // convert to [hPa] = [mbar]
 
-  altitude = 44330 * (1.0 - pow(pressure / seaLevelhPa, 0.1903));
+  return 44330 * (1.0 - pow(pressure / seaLevelhPa, 0.1903));
 
-  return altitude;
 }
+
+
+
+/*--------------------------------
+ sealevel
+ args:
+ returns pressure at sealevel depending on the  altitude of the pressure reading
+ Usefull for weather related sketches
+ 
+ mean sea level barometric pressure = 1013.25 [mbar]
+ *--------------------------------*/
+float Adafruit_BMP280::seaLevel(float pressure, float altitude)
+{
+    return pressure / pow(1-(altitude/44330.0),5.255);
+}
+
+
