@@ -2,7 +2,6 @@
   "name": "Adafruit_BMP280_Library",
   "keywords": "BMP280, temperature, barometric pressure",
   "description": "Arduino Library for Bosch BMP280 temperature and barometric pressure sensor",
-  "version": "1.1",
   "repository":
   {
     "type": "git",
