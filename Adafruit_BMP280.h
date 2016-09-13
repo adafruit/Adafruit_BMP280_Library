@@ -130,6 +130,7 @@ class Adafruit_BMP280
     float readTemperature(void);
     float readPressure(void);
     float readAltitude(float seaLevelhPa = 1013.25);
+    float seaLevelForAltitude(float altitude, float atmospheric);
 
     // function to efficiently read all sensors at once
     // if a particular pointer is NULL, it is ignored

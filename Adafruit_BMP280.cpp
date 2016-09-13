@@ -411,13 +411,44 @@ float Adafruit_BMP280::compensatePressure(int32_t adc_P) {
   return (float)p/256;
 }
 
-float Adafruit_BMP280::readAltitude(float seaLevelhPa) {
-  float altitude;
+/**************************************************************************/
+/*!
+    Calculates the altitude (in meters) from the specified atmospheric
+    pressure (in hPa), and sea-level pressure (in hPa).
 
-  float pressure = readPressure(); // in Si units for Pascal
-  pressure /= 100;
+    @param  seaLevel      Sea-level pressure in hPa
+    @param  atmospheric   Atmospheric pressure in hPa
+*/
+/**************************************************************************/
+float Adafruit_BMP280::readAltitude(float seaLevel)
+{
+  // Equation taken from BMP180 datasheet (page 16):
+  //  http://www.adafruit.com/datasheets/BST-BMP180-DS000-09.pdf
 
-  altitude = 44330 * (1.0 - pow(pressure / seaLevelhPa, 0.1903));
+  // Note that using the equation from wikipedia can give bad results
+  // at high altitude.  See this thread for more information:
+  //  http://forums.adafruit.com/viewtopic.php?f=22&t=58064
 
-  return altitude;
+  float atmospheric = readPressure() / 100.0F;
+  return 44330.0 * (1.0 - pow(atmospheric / seaLevel, 0.1903));
+}
+
+/**************************************************************************/
+/*!
+    Calculates the pressure at sea level (in hPa) from the specified altitude
+    (in meters), and atmospheric pressure (in hPa).
+    @param  altitude      Altitude in meters
+    @param  atmospheric   Atmospheric pressure in hPa
+*/
+/**************************************************************************/
+float Adafruit_BMP280::seaLevelForAltitude(float altitude, float atmospheric)
+{
+  // Equation taken from BMP180 datasheet (page 17):
+  //  http://www.adafruit.com/datasheets/BST-BMP180-DS000-09.pdf
+
+  // Note that using the equation from wikipedia can give bad results
+  // at high altitude.  See this thread for more information:
+  //  http://forums.adafruit.com/viewtopic.php?f=22&t=58064
+
+  return atmospheric / pow(1.0 - (altitude/44330.0), 5.255);
 }
