@@ -33,7 +33,7 @@ void setup() {
   Serial.begin(9600);
   Serial.println(F("BMP280 test"));
   
-  if (!bme.begin()) {  
+  if (!bme.begin(0x77)) {  // i2c address (can also be 0x76)
     Serial.println(F("Could not find a valid BMP280 sensor, check wiring!"));
     while (1);
   }
