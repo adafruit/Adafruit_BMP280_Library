@@ -32,9 +32,10 @@
 #endif
 
 /*=========================================================================
-    I2C ADDRESS/BITS
+    I2C ADDRESS/BITS/SETTINGS
     -----------------------------------------------------------------------*/
     #define BMP280_ADDRESS                (0x77)
+    #define BMP280_CHIPID                 (0x58)
 /*=========================================================================*/
 
 /*=========================================================================
@@ -104,7 +105,7 @@ class Adafruit_BMP280_Unified : public Adafruit_Sensor
   public:
     Adafruit_BMP280_Unified(int32_t sensorID = -1);
 
-    bool  begin(uint8_t addr = BMP280_ADDRESS);
+    bool  begin(uint8_t addr = BMP280_ADDRESS, uint8_t chipid = BMP280_CHIPID);
     void  getTemperature(float *temp);
     void  getPressure(float *pressure);
     float pressureToAltitude(float seaLevel, float atmospheric, float temp);
