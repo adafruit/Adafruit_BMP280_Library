@@ -37,7 +37,7 @@ Adafruit_BMP280::Adafruit_BMP280(int8_t cspin, int8_t mosipin, int8_t misopin, i
 { }
 
 
-bool Adafruit_BMP280::begin(uint8_t a) {
+bool Adafruit_BMP280::begin(uint8_t a, uint8_t chipid) {
   _i2caddr = a;
 
   if (_cs == -1) {
@@ -58,7 +58,7 @@ bool Adafruit_BMP280::begin(uint8_t a) {
     }
   }
 
-  if (read8(BMP280_REGISTER_CHIPID) != 0x58)
+  if (read8(BMP280_REGISTER_CHIPID) != chipid)
     return false;
 
   readCoefficients();
