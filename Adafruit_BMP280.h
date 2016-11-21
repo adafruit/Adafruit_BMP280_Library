@@ -123,11 +123,11 @@ class Adafruit_BMP280_Unified : public Adafruit_Sensor
 class Adafruit_BMP280
 {
   public:
-    Adafruit_BMP280(void);
+    Adafruit_BMP280();
     Adafruit_BMP280(int8_t cspin);
     Adafruit_BMP280(int8_t cspin, int8_t mosipin, int8_t misopin, int8_t sckpin);
 
-    bool  begin(uint8_t addr = BMP280_ADDRESS);
+    bool  begin(uint8_t addr = BMP280_ADDRESS, uint8_t chipid = BMP280_CHIPID);
     float readTemperature(void);
     float readPressure(void);
     float readAltitude(float seaLevelhPa = 1013.25);
