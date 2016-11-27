@@ -124,7 +124,6 @@ class Adafruit_BMP280
   public:
     Adafruit_BMP280(void);
     Adafruit_BMP280(int8_t cspin);
-    Adafruit_BMP280(int8_t cspin, int8_t mosipin, int8_t misopin, int8_t sckpin);
 
     bool  begin(uint8_t addr = BMP280_ADDRESS);
     float readTemperature(void);
