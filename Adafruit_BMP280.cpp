@@ -110,7 +110,7 @@ void Adafruit_BMP280::write8(byte reg, byte value)
 
 /**************************************************************************/
 /*!
-    @brief  Reads an 8 bit value over I2C
+    @brief  Reads an 8 bit value over I2C/SPI
 */
 /**************************************************************************/
 uint8_t Adafruit_BMP280::read8(byte reg)
@@ -139,7 +139,7 @@ uint8_t Adafruit_BMP280::read8(byte reg)
 
 /**************************************************************************/
 /*!
-    @brief  Reads a 16 bit value over I2C
+    @brief  Reads a 16 bit value over I2C/SPI
 */
 /**************************************************************************/
 uint16_t Adafruit_BMP280::read16(byte reg)
@@ -175,7 +175,7 @@ uint16_t Adafruit_BMP280::read16_LE(byte reg) {
 
 /**************************************************************************/
 /*!
-    @brief  Reads a signed 16 bit value over I2C
+    @brief  Reads a signed 16 bit value over I2C/SPI
 */
 /**************************************************************************/
 int16_t Adafruit_BMP280::readS16(byte reg)
@@ -193,10 +193,9 @@ int16_t Adafruit_BMP280::readS16_LE(byte reg)
 
 /**************************************************************************/
 /*!
-    @brief  Reads a signed 16 bit value over I2C
+    @brief  Reads a 24 bit value over I2C/SPI
 */
 /**************************************************************************/
-
 uint32_t Adafruit_BMP280::read24(byte reg)
 {
   uint32_t value;
