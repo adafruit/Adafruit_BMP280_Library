@@ -69,6 +69,21 @@
       BMP280_REGISTER_TEMPDATA           = 0xFA,
     };
 
+/*=========================================================================
+    Standby times
+    -----------------------------------------------------------------------*/
+    enum StandbyTime
+    {
+      STANDBY_0_5_MS  = 0b000,
+      STANDBY_62_5_MS = 0b001,
+      STANDBY_125_MS  = 0b010,
+      STANDBY_250_MS  = 0b011,
+      STANDBY_500_MS  = 0b100,
+      STANDBY_1000_MS = 0b101,
+      STANDBY_2000_MS = 0b110,
+      STANDBY_4000_MS = 0b111,
+    };
+
 /*=========================================================================*/
 
 /*=========================================================================
@@ -132,6 +147,7 @@ class Adafruit_BMP280
     float readPressure(void);
     float readAltitude(float seaLevelhPa = 1013.25);
 
+    void setStandby(StandbyTime value);
   private:
 
     void readCoefficients(void);

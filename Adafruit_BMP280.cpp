@@ -323,3 +323,16 @@ float Adafruit_BMP280::readAltitude(float seaLevelhPa) {
 
   return altitude;
 }
+
+/**************************************************************************/
+/*!
+  Set the "standby" time in normal mode.  The period between readings.
+  By default if unset this is 0.5ms (2000 Hz) and the chip self-heats.
+*/
+/**************************************************************************/
+void Adafruit_BMP280::setStandby(StandbyTime value) {
+  byte config = read8(BMP280_REGISTER_CONFIG);
+  config &= 0b00011111;
+  config |= value << 5;
+  write8(BMP280_REGISTER_CONFIG, config);
+}
