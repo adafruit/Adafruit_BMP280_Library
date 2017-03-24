@@ -25,15 +25,15 @@
 #define BMP_MOSI 11 
 #define BMP_CS 10
 
-Adafruit_BMP280 bme; // I2C
-//Adafruit_BMP280 bme(BMP_CS); // hardware SPI
-//Adafruit_BMP280 bme(BMP_CS, BMP_MOSI, BMP_MISO,  BMP_SCK);
+Adafruit_BMP280 bmp; // I2C
+//Adafruit_BMP280 bmp(BMP_CS); // hardware SPI
+//Adafruit_BMP280 bmp(BMP_CS, BMP_MOSI, BMP_MISO,  BMP_SCK);
 
 void setup() {
   Serial.begin(9600);
   Serial.println(F("BMP280 test"));
   
-  if (!bme.begin()) {  
+  if (!bmp.begin()) {  
     Serial.println(F("Could not find a valid BMP280 sensor, check wiring!"));
     while (1);
   }
@@ -41,15 +41,15 @@ void setup() {
 
 void loop() {
     Serial.print(F("Temperature = "));
-    Serial.print(bme.readTemperature());
+    Serial.print(bmp.readTemperature());
     Serial.println(" *C");
     
     Serial.print(F("Pressure = "));
-    Serial.print(bme.readPressure());
+    Serial.print(bmp.readPressure());
     Serial.println(" Pa");
 
     Serial.print(F("Approx altitude = "));
-    Serial.print(bme.readAltitude(1013.25)); // this should be adjusted to your local forcase
+    Serial.print(bmp.readAltitude(1013.25)); // this should be adjusted to your local forcase
     Serial.println(" m");
     
     Serial.println();
