@@ -142,23 +142,23 @@ class Adafruit_BMP280
         };
 
         enum sensor_filter {
-            FILTER_OFF = 0b000,
-            FILTER_X2  = 0b001,
-            FILTER_X4  = 0b010,
-            FILTER_X8  = 0b011,
-            FILTER_X16 = 0b100
+            FILTER_OFF = 0x00,
+            FILTER_X2  = 0x01,
+            FILTER_X4  = 0x02,
+            FILTER_X8  = 0x03,
+            FILTER_X16 = 0x04
         };
 
         // standby durations in ms 
         enum standby_duration {
-            STANDBY_MS_0_5  = 0b000,
-            STANDBY_MS_10   = 0b110,
-            STANDBY_MS_20   = 0b111,
-            STANDBY_MS_62_5 = 0b001,
-            STANDBY_MS_125  = 0b010,
-            STANDBY_MS_250  = 0b011,
-            STANDBY_MS_500  = 0b100,
-            STANDBY_MS_1000 = 0b101
+            STANDBY_MS_1      = 0x00,
+            STANDBY_MS_63     = 0x01,
+            STANDBY_MS_125    = 0x02,
+            STANDBY_MS_250    = 0x03,
+            STANDBY_MS_500    = 0x04,
+            STANDBY_MS_1000   = 0x05,
+            STANDBY_MS_2000   = 0x06,
+            STANDBY_MS_4000   = 0x07
         };
     */
     Adafruit_BMP280();
