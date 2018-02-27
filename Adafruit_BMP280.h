@@ -137,7 +137,8 @@ class Adafruit_BMP280
         enum sensor_mode {
             MODE_SLEEP  = 0x00,
             MODE_FORCED = 0x01,
-            MODE_NORMAL = 0x03
+            MODE_NORMAL = 0x03,
+            MODE_SOFT_RESET_CODE = 0xB6
         };
 
         enum sensor_filter {
