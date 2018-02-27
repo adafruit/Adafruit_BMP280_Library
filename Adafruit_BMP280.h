@@ -126,12 +126,12 @@ class Adafruit_BMP280
   public:
   /*
      enum sensor_sampling {
-            SAMPLING_NONE = 0b000,
-            SAMPLING_X1   = 0b001,
-            SAMPLING_X2   = 0b010,
-            SAMPLING_X4   = 0b011,
-            SAMPLING_X8   = 0b100,
-            SAMPLING_X16  = 0b101
+            SAMPLING_NONE = 0x00,
+            SAMPLING_X1   = 0x01,
+            SAMPLING_X2   = 0x02,
+            SAMPLING_X4   = 0x03,
+            SAMPLING_X8   = 0x04,
+            SAMPLING_X16  = 0x05
         };
 
         enum sensor_mode {
