@@ -100,31 +100,10 @@
     } bmp280_calib_data;
 /*=========================================================================*/
 
-/*
-class Adafruit_BMP280_Unified : public Adafruit_Sensor
-{
-  public:
-    Adafruit_BMP280_Unified(int32_t sensorID = -1);
-
-    bool  begin(uint8_t addr = BMP280_ADDRESS, uint8_t chipid = BMP280_CHIPID);
-    void  getTemperature(float *temp);
-    void  getPressure(float *pressure);
-    float pressureToAltitude(float seaLevel, float atmospheric, float temp);
-    float seaLevelForAltitude(float altitude, float atmospheric, float temp);
-    void  getEvent(sensors_event_t*);
-    void  getSensor(sensor_t*);
-
-  private:
-    uint8_t   _i2c_addr;
-    int32_t   _sensorID;
-};
-
-*/
-
 class Adafruit_BMP280
 {
   public:
-  /*
+
      enum sensor_sampling {
             SAMPLING_NONE = 0x00,
             SAMPLING_X1   = 0x01,
@@ -160,7 +139,7 @@ class Adafruit_BMP280
             STANDBY_MS_2000   = 0x06,
             STANDBY_MS_4000   = 0x07
         };
-    */
+
     Adafruit_BMP280();
     Adafruit_BMP280(int8_t cspin);
     Adafruit_BMP280(int8_t cspin, int8_t mosipin, int8_t misopin, int8_t sckpin);
