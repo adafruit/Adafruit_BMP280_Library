@@ -68,7 +68,7 @@ bool Adafruit_BMP280::begin(uint8_t a, uint8_t chipid) {
   return true;
 }
 
-void Adafruit_BME280::setSampling(sensor_mode mode,
+void Adafruit_BMP280::setSampling(sensor_mode mode,
 		 sensor_sampling   tempSampling,
 		 sensor_sampling   pressSampling,
 		 sensor_filter     filter,
