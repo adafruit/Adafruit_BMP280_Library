@@ -149,6 +149,13 @@ class Adafruit_BMP280
     float readPressure(void);
     float readAltitude(float seaLevelhPa = 1013.25);
 
+    void setSampling(sensor_mode mode      = MODE_NORMAL,
+			 sensor_sampling tempSampling  = SAMPLING_X16,
+			 sensor_sampling pressSampling = SAMPLING_X16,
+			 sensor_filter filter          = FILTER_OFF,
+			 standby_duration duration     = STANDBY_MS_1
+			 );
+
   private:
 
     void readCoefficients(void);
@@ -170,6 +177,44 @@ class Adafruit_BMP280
 
     bmp280_calib_data _bmp280_calib;
 
+    // The config register
+    struct config
+    {
+        // inactive duration (standby time) in normal mode
+        unsigned int t_sb : 3;
+
+        // filter settings
+        unsigned int filter : 3;
+
+        // unused - don't set
+        unsigned int none : 1;
+        unsigned int spi3w_en : 1;
+
+        unsigned int get()
+        {
+            return (t_sb << 5) | (filter << 3) | spi3w_en;
+        }
+    };
+    config _configReg;
+
+    // The ctrl_meas register
+    struct ctrl_meas
+    {
+        // temperature oversampling
+        unsigned int osrs_t : 3;
+
+        // pressure oversampling
+        unsigned int osrs_p : 3;
+
+        // device mode
+        unsigned int mode : 2;
+
+        unsigned int get()
+        {
+            return (osrs_t << 5) | (osrs_p << 3) | mode;
+        }
+    };
+    ctrl_meas _measReg;
 };
 
 #endif
