@@ -103,7 +103,7 @@
 class Adafruit_BMP280
 {
   public:
-
+  
      enum sensor_sampling {
             SAMPLING_NONE = 0x00,
             SAMPLING_X1   = 0x01,
@@ -148,7 +148,7 @@ class Adafruit_BMP280
     float readTemperature(void);
     float readPressure(void);
     float readAltitude(float seaLevelhPa = 1013.25);
-
+    
     void setSampling(sensor_mode mode      = MODE_NORMAL,
 			 sensor_sampling tempSampling  = SAMPLING_X16,
 			 sensor_sampling pressSampling = SAMPLING_X16,
