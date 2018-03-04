@@ -35,6 +35,7 @@
     I2C ADDRESS/BITS/SETTINGS
     -----------------------------------------------------------------------*/
     #define BMP280_ADDRESS                (0x77)
+    #define BMP280_ADDRESS1               (0x76)
     #define BMP280_CHIPID                 (0x58)
 /*=========================================================================*/
 
@@ -99,30 +100,46 @@
     } bmp280_calib_data;
 /*=========================================================================*/
 
-/*
-class Adafruit_BMP280_Unified : public Adafruit_Sensor
-{
-  public:
-    Adafruit_BMP280_Unified(int32_t sensorID = -1);
-
-    bool  begin(uint8_t addr = BMP280_ADDRESS, uint8_t chipid = BMP280_CHIPID);
-    void  getTemperature(float *temp);
-    void  getPressure(float *pressure);
-    float pressureToAltitude(float seaLevel, float atmospheric, float temp);
-    float seaLevelForAltitude(float altitude, float atmospheric, float temp);
-    void  getEvent(sensors_event_t*);
-    void  getSensor(sensor_t*);
-
-  private:
-    uint8_t   _i2c_addr;
-    int32_t   _sensorID;
-};
-
-*/
-
 class Adafruit_BMP280
 {
   public:
+  
+     enum sensor_sampling {
+            SAMPLING_NONE = 0x00,
+            SAMPLING_X1   = 0x01,
+            SAMPLING_X2   = 0x02,
+            SAMPLING_X4   = 0x03,
+            SAMPLING_X8   = 0x04,
+            SAMPLING_X16  = 0x05
+        };
+
+        enum sensor_mode {
+            MODE_SLEEP  = 0x00,
+            MODE_FORCED = 0x01,
+            MODE_NORMAL = 0x03,
+            MODE_SOFT_RESET_CODE = 0xB6
+        };
+
+        enum sensor_filter {
+            FILTER_OFF = 0x00,
+            FILTER_X2  = 0x01,
+            FILTER_X4  = 0x02,
+            FILTER_X8  = 0x03,
+            FILTER_X16 = 0x04
+        };
+
+        // standby durations in ms 
+        enum standby_duration {
+            STANDBY_MS_1      = 0x00,
+            STANDBY_MS_63     = 0x01,
+            STANDBY_MS_125    = 0x02,
+            STANDBY_MS_250    = 0x03,
+            STANDBY_MS_500    = 0x04,
+            STANDBY_MS_1000   = 0x05,
+            STANDBY_MS_2000   = 0x06,
+            STANDBY_MS_4000   = 0x07
+        };
+
     Adafruit_BMP280();
     Adafruit_BMP280(int8_t cspin);
     Adafruit_BMP280(int8_t cspin, int8_t mosipin, int8_t misopin, int8_t sckpin);
@@ -131,6 +148,13 @@ class Adafruit_BMP280
     float readTemperature(void);
     float readPressure(void);
     float readAltitude(float seaLevelhPa = 1013.25);
+    //void takeForcedMeasurement();    
+    void setSampling(sensor_mode mode      = MODE_NORMAL,
+			 sensor_sampling tempSampling  = SAMPLING_X16,
+			 sensor_sampling pressSampling = SAMPLING_X16,
+			 sensor_filter filter          = FILTER_OFF,
+			 standby_duration duration     = STANDBY_MS_1
+			 );
 
   private:
 
@@ -153,6 +177,44 @@ class Adafruit_BMP280
 
     bmp280_calib_data _bmp280_calib;
 
+    // The config register
+    struct config
+    {
+        // inactive duration (standby time) in normal mode
+        unsigned int t_sb : 3;
+
+        // filter settings
+        unsigned int filter : 3;
+
+        // unused - don't set
+        unsigned int none : 1;
+        unsigned int spi3w_en : 1;
+
+        unsigned int get()
+        {
+            return (t_sb << 5) | (filter << 3) | spi3w_en;
+        }
+    };
+    config _configReg;
+
+    // The ctrl_meas register
+    struct ctrl_meas
+    {
+        // temperature oversampling
+        unsigned int osrs_t : 3;
+
+        // pressure oversampling
+        unsigned int osrs_p : 3;
+
+        // device mode
+        unsigned int mode : 2;
+
+        unsigned int get()
+        {
+            return (osrs_t << 5) | (osrs_p << 3) | mode;
+        }
+    };
+    ctrl_meas _measReg;
 };
 
 #endif

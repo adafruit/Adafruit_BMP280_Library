@@ -37,6 +37,13 @@ void setup() {
     Serial.println(F("Could not find a valid BMP280 sensor, check wiring!"));
     while (1);
   }
+  
+  // Example, desc in datasheet
+  bmp.setSampling(Adafruit_BMP280::MODE_NORMAL,  // mode
+                  Adafruit_BMP280::SAMPLING_X2,  // temperature
+                  Adafruit_BMP280::SAMPLING_X16, // pressure                  
+                  Adafruit_BMP280::FILTER_X16,   // filter
+                  Adafruit_BMP280::STANDBY_MS_500); // standby
 }
 
 void loop() {
