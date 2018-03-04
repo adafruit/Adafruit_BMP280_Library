@@ -23,34 +23,34 @@ setSampling(sensor_mode mode  = MODE_NORMAL,
 			 standby_duration duration     = STANDBY_MS_1
 			 );
 
-sensor_sampling (pressure and temperature:
-    SAMPLING_NONE
-    SAMPLING_X1
-    SAMPLING_X2
-    SAMPLING_X4
-    SAMPLING_X8
-    SAMPLING_X16
-
-sensor_mode: 
-    MODE_SLEEP     
-    MODE_NORMAL
-
-sensor_filter (pressure):
-    FILTER_OFF
-    FILTER_X2 
-    FILTER_X4 
-    FILTER_X8 
-    FILTER_X16
-
-standby_duration:
+sensor_sampling (pressure and temperature:  
+    SAMPLING_NONE  
+    SAMPLING_X1  
+    SAMPLING_X2  
+    SAMPLING_X4  
+    SAMPLING_X8  
+    SAMPLING_X16  
+    
+sensor_mode:   
+    MODE_SLEEP       
+    MODE_NORMAL   
+    
+sensor_filter (pressure):   
+    FILTER_OFF  
+    FILTER_X2   
+    FILTER_X4   
+    FILTER_X8   
+    FILTER_X16   
+  
+standby_duration:  
     STANDBY_MS_1   
     STANDBY_MS_63  
-    STANDBY_MS_125 
-    STANDBY_MS_250 
-    STANDBY_MS_500 
-    STANDBY_MS_1000
-    STANDBY_MS_2000
-    STANDBY_MS_4000
+    STANDBY_MS_125  
+    STANDBY_MS_250   
+    STANDBY_MS_500   
+    STANDBY_MS_1000  
+    STANDBY_MS_2000   
+    STANDBY_MS_4000  
 
 <!-- START COMPATIBILITY TABLE -->
 
