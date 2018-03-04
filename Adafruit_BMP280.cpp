@@ -37,12 +37,14 @@ Adafruit_BMP280::Adafruit_BMP280(int8_t cspin, int8_t mosipin, int8_t misopin, i
 { }
 
 
-bool Adafruit_BMP280::begin(uint8_t a, uint8_t chipid) {
+bool Adafruit_BMP280::begin(uint8_t a, uint8_t chipid, const bool &initialiseWire) {
   _i2caddr = a;
 
   if (_cs == -1) {
     // i2c
-    Wire.begin();
+	if (initialiseWire) {
+      Wire.begin();
+	}
   } else {
     digitalWrite(_cs, HIGH);
     pinMode(_cs, OUTPUT);
