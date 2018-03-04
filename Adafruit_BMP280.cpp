@@ -346,9 +346,10 @@ float Adafruit_BMP280::readAltitude(float seaLevelhPa) {
 /**************************************************************************/
 /*!
     @brief  Take a new measurement (only possible in forced mode)
-    !!!not tested!!!
+    !!!todo!!!
 */
 /**************************************************************************/
+/*
 void Adafruit_BMP280::takeForcedMeasurement()
 {   
     // If we are in forced mode, the BME sensor goes back to sleep after each
@@ -364,3 +365,4 @@ void Adafruit_BMP280::takeForcedMeasurement()
 		delay(1);
     }
 }
+*/
