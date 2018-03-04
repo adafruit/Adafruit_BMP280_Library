@@ -2,9 +2,6 @@
 
 This driver is for the Adafruit BMP280 Breakout (http://www.adafruit.com/products/2651)
 
-## About the Fork ##
-try to add the oversample and filter option
-
 ## About the BMP280 ##
 
 This precision sensor from Bosch is the best low-cost sensing solution for measuring barometric pressure and temperature. Because pressure changes with altitude you can also use it as an altimeter! 
@@ -14,6 +11,46 @@ This precision sensor from Bosch is the best low-cost sensing solution for measu
 Adafruit invests time and resources providing this open source code.  Please support Adafruit and open-source hardware by purchasing products from Adafruit!
 
 Written by Kevin (KTOWN) Townsend for Adafruit Industries.
+
+## Turning Parameter ##
+add the oversample and filter option
+use to adjust:
+
+setSampling(sensor_mode mode  = MODE_NORMAL,
+			 sensor_sampling tempSampling  = SAMPLING_X16,
+			 sensor_sampling pressSampling = SAMPLING_X16,
+			 sensor_filter filter          = FILTER_OFF,
+			 standby_duration duration     = STANDBY_MS_1
+			 );
+
+sensor_sampling (pressure and temperature:
+    SAMPLING_NONE
+    SAMPLING_X1
+    SAMPLING_X2
+    SAMPLING_X4
+    SAMPLING_X8
+    SAMPLING_X16
+
+sensor_mode: 
+    MODE_SLEEP     
+    MODE_NORMAL
+
+sensor_filter (pressure):
+    FILTER_OFF
+    FILTER_X2 
+    FILTER_X4 
+    FILTER_X8 
+    FILTER_X16
+
+standby_duration:
+    STANDBY_MS_1   
+    STANDBY_MS_63  
+    STANDBY_MS_125 
+    STANDBY_MS_250 
+    STANDBY_MS_500 
+    STANDBY_MS_1000
+    STANDBY_MS_2000
+    STANDBY_MS_4000
 
 <!-- START COMPATIBILITY TABLE -->
 
