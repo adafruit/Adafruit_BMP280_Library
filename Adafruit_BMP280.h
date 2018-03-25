@@ -57,16 +57,27 @@
       BMP280_REGISTER_DIG_P8              = 0x9C,
       BMP280_REGISTER_DIG_P9              = 0x9E,
 
+      BMP280_REGISTER_DIG_H1              = 0xA1,
+      BMP280_REGISTER_DIG_H2              = 0xE1,
+      BMP280_REGISTER_DIG_H3              = 0xE3,
+      BMP280_REGISTER_DIG_H4              = 0xE4,
+      BMP280_REGISTER_DIG_H4_LO           = 0xE5,
+      BMP280_REGISTER_DIG_H5_LO           = 0xE5,
+      BMP280_REGISTER_DIG_H5              = 0xE6,
+      BMP280_REGISTER_DIG_H6              = 0xE7,
+
       BMP280_REGISTER_CHIPID             = 0xD0,
       BMP280_REGISTER_VERSION            = 0xD1,
       BMP280_REGISTER_SOFTRESET          = 0xE0,
 
       BMP280_REGISTER_CAL26              = 0xE1,  // R calibration stored in 0xE1-0xF0
 
+      BMP280_REGISTER_CONTROL_HUMIDITY   = 0xF2,
       BMP280_REGISTER_CONTROL            = 0xF4,
       BMP280_REGISTER_CONFIG             = 0xF5,
       BMP280_REGISTER_PRESSUREDATA       = 0xF7,
       BMP280_REGISTER_TEMPDATA           = 0xFA,
+      BMP280_REGISTER_HUMIDITYDATA       = 0xFD,
     };
 
 /*=========================================================================*/
@@ -131,6 +142,7 @@ class Adafruit_BMP280
     float readTemperature(void);
     float readPressure(void);
     float readAltitude(float seaLevelhPa = 1013.25);
+    float readHumidity(void);
 
   private:
 

@@ -62,6 +62,7 @@ bool Adafruit_BMP280::begin(uint8_t a, uint8_t chipid) {
     return false;
 
   readCoefficients();
+  write8(BMP280_REGISTER_CONTROL_HUMIDITY, 0x05); // max oversampling
   write8(BMP280_REGISTER_CONTROL, 0x3F);
   return true;
 }
@@ -252,6 +253,15 @@ void Adafruit_BMP280::readCoefficients(void)
     _bmp280_calib.dig_P7 = readS16_LE(BMP280_REGISTER_DIG_P7);
     _bmp280_calib.dig_P8 = readS16_LE(BMP280_REGISTER_DIG_P8);
     _bmp280_calib.dig_P9 = readS16_LE(BMP280_REGISTER_DIG_P9);
+
+    _bmp280_calib.dig_H1 = read8(BMP280_REGISTER_DIG_H1);
+    _bmp280_calib.dig_H2 = readS16_LE(BMP280_REGISTER_DIG_H2);
+    _bmp280_calib.dig_H3 = read8(BMP280_REGISTER_DIG_H3);
+    _bmp280_calib.dig_H4 = ((uint16_t)read8(BMP280_REGISTER_DIG_H4) << 4) |
+        (read8(BMP280_REGISTER_DIG_H4_LO) & 0xf);
+    _bmp280_calib.dig_H5 = ((uint16_t)read8(BMP280_REGISTER_DIG_H5) << 4) |
+        (read8(BMP280_REGISTER_DIG_H5_LO) >> 4);
+    _bmp280_calib.dig_H6 = read8(BMP280_REGISTER_DIG_H6);
 }
 
 /**************************************************************************/
@@ -322,4 +332,31 @@ float Adafruit_BMP280::readAltitude(float seaLevelhPa) {
   altitude = 44330 * (1.0 - pow(pressure / seaLevelhPa, 0.1903));
 
   return altitude;
+}
+
+float Adafruit_BMP280::readHumidity(void)
+{
+  int32_t adc_H = read16(BMP280_REGISTER_HUMIDITYDATA);
+  int32_t var1, var2, var3, var4, var5;
+
+  // Must be done first to get the t_fine variable set up
+  readTemperature();
+
+  var1 = t_fine - 76800;
+  var2 = adc_H << 14;
+  var3 = (int32_t)_bmp280_calib.dig_H4 << 20;
+  var4 = (int32_t)_bmp280_calib.dig_H5 * var1;
+  var5 = (var2 - var3 - var4 + 16384) >> 15;
+  var2 = (var1 * (int32_t)_bmp280_calib.dig_H6) >> 10;
+  var3 = (var1 * (int32_t)_bmp280_calib.dig_H3) >> 11;
+  var4 = ((var2 * (var3 + 32768)) >> 10) + 2097152;
+  var2 = (var4 * (int32_t)_bmp280_calib.dig_H2 + 8192) >> 14;
+  var3 = var5 * var2;
+  var4 = ((var3 >> 15) * (var3 >> 15)) >> 7;
+  var5 = var3 - ((var4 * (int32_t)_bmp280_calib.dig_H1) >> 4);
+
+  var1 = var5 < 0 ? 0 : var5;
+  var1 = var1 > 419430400 ? 419430400 : var1;
+
+  return (var1 >> 12) / 1024.0f;
 }
