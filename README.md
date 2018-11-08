@@ -1,6 +1,8 @@
-# Adafruit BMP280 Driver (Barometric Pressure Sensor)
+# Adafruit BMP280 Driver (Barometric Pressure Sensor) [![Build Status](https://travis-ci.org/adafruit/Adafruit_BMP280_Library.svg?branch=master)](https://travis-ci.org/adafruit/Adafruit_BMP280_Library)
 
 This driver is for the [Adafruit BMP280 Breakout](http://www.adafruit.com/products/2651)
+
+<img src="https://cdn-learn.adafruit.com/assets/assets/000/026/851/small360/sensors_2651_iso_ORIG.jpg?1438369374" height="300"/>
 
 ## About the BMP280 ##
 
