@@ -62,8 +62,26 @@ bool Adafruit_BMP280::begin(uint8_t a, uint8_t chipid) {
     return false;
 
   readCoefficients();
-  write8(BMP280_REGISTER_CONTROL, 0x3F);
+  // write8(BMP280_REGISTER_CONTROL, 0x3F); /* needed? */
+  setSampling();
+  delay(100);
   return true;
+}
+
+void Adafruit_BMP280::setSampling(sensor_mode mode,
+		 sensor_sampling   tempSampling,
+		 sensor_sampling   pressSampling,
+		 sensor_filter     filter,
+		 standby_duration  duration) {
+     _measReg.mode     = mode;
+    _measReg.osrs_t   = tempSampling;
+    _measReg.osrs_p   = pressSampling;
+
+    _configReg.filter = filter;
+    _configReg.t_sb   = duration;
+
+    write8(BMP280_REGISTER_CONFIG, _configReg.get());
+    write8(BMP280_REGISTER_CONTROL, _measReg.get());
 }
 
 uint8_t Adafruit_BMP280::spixfer(uint8_t x) {
@@ -205,7 +223,7 @@ uint32_t Adafruit_BMP280::read24(byte reg)
     Wire.write((uint8_t)reg);
     Wire.endTransmission();
     Wire.requestFrom((uint8_t)_i2caddr, (byte)3);
-    
+
     value = Wire.read();
     value <<= 8;
     value |= Wire.read();
@@ -217,7 +235,7 @@ uint32_t Adafruit_BMP280::read24(byte reg)
       SPI.beginTransaction(SPISettings(500000, MSBFIRST, SPI_MODE0));
     digitalWrite(_cs, LOW);
     spixfer(reg | 0x80); // read, bit 7 high
-    
+
     value = spixfer(0);
     value <<= 8;
     value |= spixfer(0);
@@ -323,3 +341,27 @@ float Adafruit_BMP280::readAltitude(float seaLevelhPa) {
 
   return altitude;
 }
+
+/**************************************************************************/
+/*!
+    @brief  Take a new measurement (only possible in forced mode)
+    !!!todo!!!
+*/
+/**************************************************************************/
+/*
+void Adafruit_BMP280::takeForcedMeasurement()
+{
+    // If we are in forced mode, the BME sensor goes back to sleep after each
+    // measurement and we need to set it to forced mode once at this point, so
+    // it will take the next measurement and then return to sleep again.
+    // In normal mode simply does new measurements periodically.
+    if (_measReg.mode == MODE_FORCED) {
+        // set to forced mode, i.e. "take next measurement"
+        write8(BMP280_REGISTER_CONTROL, _measReg.get());
+        // wait until measurement has been completed, otherwise we would read
+        // the values from the last measurement
+        while (read8(BMP280_REGISTER_STATUS) & 0x08)
+		delay(1);
+    }
+}
+*/
