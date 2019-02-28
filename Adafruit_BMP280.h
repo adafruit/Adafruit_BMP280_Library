@@ -253,7 +253,7 @@ class Adafruit_BMP280
       /** Used to retrieve the assembled config register's byte value. */
       unsigned int get()
       {
-        return (t_sb << 5) | (filter << 3) | spi3w_en;
+        return (t_sb << 5) | (filter << 2) | spi3w_en;
       }
     };
 
@@ -269,7 +269,7 @@ class Adafruit_BMP280
       /** Used to retrieve the assembled ctrl_meas register's byte value. */
       unsigned int get()
       {
-        return (osrs_t << 5) | (osrs_p << 3) | mode;
+        return (osrs_t << 5) | (osrs_p << 2) | mode;
       }
     };
 
