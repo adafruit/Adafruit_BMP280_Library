@@ -69,7 +69,7 @@ Adafruit_BMP280::Adafruit_BMP280(int8_t cspin, int8_t mosipin, int8_t misopin,
  *  @return True if the init was successful, otherwise false.
  */
 bool Adafruit_BMP280::begin(uint8_t addr, uint8_t chipid) {
-  _i2caddr = a;
+  _i2caddr = addr;
 
   if (_cs == -1) {
     // i2c
