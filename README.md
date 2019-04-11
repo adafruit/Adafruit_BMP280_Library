@@ -2,7 +2,7 @@
 
 This driver is for the [Adafruit BMP280 Breakout](http://www.adafruit.com/products/2651)
 
-<img src="https://cdn-learn.adafruit.com/assets/assets/000/026/851/small360/sensors_2651_iso_ORIG.jpg?1438369374" height="300"/>
+<a href="https://www.adafruit.com/product/2651"><img src="https://cdn-learn.adafruit.com/assets/assets/000/026/851/small360/sensors_2651_iso_ORIG.jpg?1438369374" height="300"/></a>
 
 ## About the BMP280 ##
 
