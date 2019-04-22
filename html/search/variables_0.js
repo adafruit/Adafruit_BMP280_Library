@@ -1,5 +1,21 @@
 var searchData=
 [
-  ['_5fspi',['_spi',['../class_adafruit___b_m_p280.html#aa23bd3e523e58468cd23ba14a9467dcc',1,'Adafruit_BMP280']]],
-  ['_5fwire',['_wire',['../class_adafruit___b_m_p280.html#a52272cf1bd6ff7be4aa9fbaa04cb19da',1,'Adafruit_BMP280']]]
+  ['dig_5fh1',['dig_H1',['../structbmp280__calib__data.html#abe6c6789d4a38564c423957d5e6b0872',1,'bmp280_calib_data']]],
+  ['dig_5fh2',['dig_H2',['../structbmp280__calib__data.html#aaeb3afa240400549f7817c6c87b5bee3',1,'bmp280_calib_data']]],
+  ['dig_5fh3',['dig_H3',['../structbmp280__calib__data.html#a401b75a6529e91948e90d40e421e2d73',1,'bmp280_calib_data']]],
+  ['dig_5fh4',['dig_H4',['../structbmp280__calib__data.html#afd133eaa7f7b14cab8126317f705c13e',1,'bmp280_calib_data']]],
+  ['dig_5fh5',['dig_H5',['../structbmp280__calib__data.html#ab0d283ed7ab4a26fd36505b1831fa3eb',1,'bmp280_calib_data']]],
+  ['dig_5fh6',['dig_H6',['../structbmp280__calib__data.html#a184c0025911cdedeb84391610c5f9d57',1,'bmp280_calib_data']]],
+  ['dig_5fp1',['dig_P1',['../structbmp280__calib__data.html#aadffbb78b62b6b52d952c89bf78286e0',1,'bmp280_calib_data']]],
+  ['dig_5fp2',['dig_P2',['../structbmp280__calib__data.html#a8e8f4e91586272463abf5e7ca3d2a371',1,'bmp280_calib_data']]],
+  ['dig_5fp3',['dig_P3',['../structbmp280__calib__data.html#a088f2845708e76334f4a441c01977766',1,'bmp280_calib_data']]],
+  ['dig_5fp4',['dig_P4',['../structbmp280__calib__data.html#a73f05510565c594116b2074ab0ff73d7',1,'bmp280_calib_data']]],
+  ['dig_5fp5',['dig_P5',['../structbmp280__calib__data.html#a37e51f1053d031cc747e8700093719e6',1,'bmp280_calib_data']]],
+  ['dig_5fp6',['dig_P6',['../structbmp280__calib__data.html#a9a76e6e6a0ae74859a2f4ecc7b04f0a7',1,'bmp280_calib_data']]],
+  ['dig_5fp7',['dig_P7',['../structbmp280__calib__data.html#a65d0abb061f85a294731e4466f28e5c9',1,'bmp280_calib_data']]],
+  ['dig_5fp8',['dig_P8',['../structbmp280__calib__data.html#a84831980d460c469926abee7e4230714',1,'bmp280_calib_data']]],
+  ['dig_5fp9',['dig_P9',['../structbmp280__calib__data.html#a75facb42146d3294c4b3502429bb11ff',1,'bmp280_calib_data']]],
+  ['dig_5ft1',['dig_T1',['../structbmp280__calib__data.html#a512563b392052c4d687d92e0fa4c69fc',1,'bmp280_calib_data']]],
+  ['dig_5ft2',['dig_T2',['../structbmp280__calib__data.html#a110637cd80d4c20cbf018370b1687a19',1,'bmp280_calib_data']]],
+  ['dig_5ft3',['dig_T3',['../structbmp280__calib__data.html#ab47d67ad2a52c66956c7c6aa7a5006d3',1,'bmp280_calib_data']]]
 ];
