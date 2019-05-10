@@ -130,7 +130,7 @@ void Adafruit_BMP280::setSampling(sensor_mode mode,
 
 uint8_t Adafruit_BMP280::spixfer(uint8_t x) {
   if (_sck == -1)
-    return SPI.transfer(x);
+    return _spi->transfer(x);
 
   // software spi
   // Serial.println("Software SPI");
