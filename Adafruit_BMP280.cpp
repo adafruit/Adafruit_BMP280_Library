@@ -375,9 +375,26 @@ float Adafruit_BMP280::readAltitude(float seaLevelhPa) {
 }
 
 /*!
+ * Calculates the pressure at sea level (in hPa) from the specified altitude
+ * (in meters), and atmospheric pressure (in hPa).
+ * @param  altitude      Altitude in meters
+ * @param  atmospheric   Atmospheric pressure in hPa
+ * @return The approximate pressure
+ */
+float Adafruit_BMP280::seaLevelForAltitude(float altitude, float atmospheric) {
+  // Equation taken from BMP180 datasheet (page 17):
+  // http://www.adafruit.com/datasheets/BST-BMP180-DS000-09.pdf
+
+  // Note that using the equation from wikipedia can give bad results
+  // at high altitude.  See this thread for more information:
+  // http://forums.adafruit.com/viewtopic.php?f=22&t=58064
+  return atmospheric / pow(1.0 - (altitude / 44330.0), 5.255);
+}
+
+/*!
  *  @brief  Take a new measurement (only possible in forced mode)
  *  !!!todo!!!
-*/
+ */
 /*
 void Adafruit_BMP280::takeForcedMeasurement()
 {
