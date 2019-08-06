@@ -138,9 +138,9 @@ public:
 
   /** Standby duration in ms */
   enum standby_duration {
-    /** 1 ms standby. */
+    /** 0.5 ms standby. */
     STANDBY_MS_1 = 0x00,
-    /** 63 ms standby. */
+    /** 62.5 ms standby. */
     STANDBY_MS_63 = 0x01,
     /** 125 ms standby. */
     STANDBY_MS_125 = 0x02,
