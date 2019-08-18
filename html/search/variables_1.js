@@ -1,11 +1,5 @@
 var searchData=
 [
-  ['dig_5fh1',['dig_H1',['../structbmp280__calib__data.html#abe6c6789d4a38564c423957d5e6b0872',1,'bmp280_calib_data']]],
-  ['dig_5fh2',['dig_H2',['../structbmp280__calib__data.html#aaeb3afa240400549f7817c6c87b5bee3',1,'bmp280_calib_data']]],
-  ['dig_5fh3',['dig_H3',['../structbmp280__calib__data.html#a401b75a6529e91948e90d40e421e2d73',1,'bmp280_calib_data']]],
-  ['dig_5fh4',['dig_H4',['../structbmp280__calib__data.html#afd133eaa7f7b14cab8126317f705c13e',1,'bmp280_calib_data']]],
-  ['dig_5fh5',['dig_H5',['../structbmp280__calib__data.html#ab0d283ed7ab4a26fd36505b1831fa3eb',1,'bmp280_calib_data']]],
-  ['dig_5fh6',['dig_H6',['../structbmp280__calib__data.html#a184c0025911cdedeb84391610c5f9d57',1,'bmp280_calib_data']]],
   ['dig_5fp1',['dig_P1',['../structbmp280__calib__data.html#aadffbb78b62b6b52d952c89bf78286e0',1,'bmp280_calib_data']]],
   ['dig_5fp2',['dig_P2',['../structbmp280__calib__data.html#a8e8f4e91586272463abf5e7ca3d2a371',1,'bmp280_calib_data']]],
   ['dig_5fp3',['dig_P3',['../structbmp280__calib__data.html#a088f2845708e76334f4a441c01977766',1,'bmp280_calib_data']]],
