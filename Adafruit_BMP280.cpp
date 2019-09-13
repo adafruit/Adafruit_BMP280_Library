@@ -412,3 +412,11 @@ void Adafruit_BMP280::takeForcedMeasurement()
     }
 }
 */
+
+void Adafruit_BMP280::reset(void) {
+  write8(BMP280_REGISTER_SOFTRESET, MODE_SOFT_RESET_CODE);
+}
+
+uint8_t Adafruit_BMP280::getStatus(void) {
+  return read8(BMP280_REGISTER_STATUS);
+}

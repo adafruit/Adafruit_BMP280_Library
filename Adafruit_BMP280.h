@@ -57,6 +57,7 @@ enum {
   BMP280_REGISTER_VERSION = 0xD1,
   BMP280_REGISTER_SOFTRESET = 0xE0,
   BMP280_REGISTER_CAL26 = 0xE1, /**< R calibration = 0xE1-0xF0 */
+  BMP280_REGISTER_STATUS = 0xF3,
   BMP280_REGISTER_CONTROL = 0xF4,
   BMP280_REGISTER_CONFIG = 0xF5,
   BMP280_REGISTER_PRESSUREDATA = 0xF7,
@@ -170,6 +171,10 @@ public:
                    sensor_sampling pressSampling = SAMPLING_X16,
                    sensor_filter filter = FILTER_OFF,
                    standby_duration duration = STANDBY_MS_1);
+
+  void reset(void);
+
+  uint8_t getStatus(void);
   
   TwoWire *_wire; /**< Wire object */
   SPIClass *_spi; /**< SPI object */
