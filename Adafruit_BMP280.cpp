@@ -324,7 +324,7 @@ float Adafruit_BMP280::readTemperature() {
 
 /*!
  * Reads the barometric pressure from the device.
- * @return Barometric pressure in hPa.
+ * @return Barometric pressure in Pa.
  */
 float Adafruit_BMP280::readPressure() {
   int64_t var1, var2, p;
