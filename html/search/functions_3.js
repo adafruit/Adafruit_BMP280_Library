@@ -1,5 +1,7 @@
 var searchData=
 [
-  ['sealevelforaltitude',['seaLevelForAltitude',['../class_adafruit___b_m_p280.html#a7504522739c2e77f106ad0a193e3fe93',1,'Adafruit_BMP280']]],
-  ['setsampling',['setSampling',['../class_adafruit___b_m_p280.html#a1a3d84395d208a5f21cbab211fda176e',1,'Adafruit_BMP280']]]
+  ['readaltitude',['readAltitude',['../class_adafruit___b_m_p280.html#a55c1a78abf03a021abb297b3f35127ff',1,'Adafruit_BMP280']]],
+  ['readpressure',['readPressure',['../class_adafruit___b_m_p280.html#aa17b6d5005079cee6e85a7a4d99814b6',1,'Adafruit_BMP280']]],
+  ['readtemperature',['readTemperature',['../class_adafruit___b_m_p280.html#a8511efd594618dea5f1e52d6bd149795',1,'Adafruit_BMP280']]],
+  ['reset',['reset',['../class_adafruit___b_m_p280.html#a6ef79c9cc7ed5d3548ed69785bf627ed',1,'Adafruit_BMP280']]]
 ];
