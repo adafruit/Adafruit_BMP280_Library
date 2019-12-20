@@ -412,3 +412,18 @@ void Adafruit_BMP280::takeForcedMeasurement()
     }
 }
 */
+
+/*!
+ *  @brief  Resets the chip via soft reset
+ */
+void Adafruit_BMP280::reset(void) {
+  write8(BMP280_REGISTER_SOFTRESET, MODE_SOFT_RESET_CODE);
+}
+
+/*!
+    @brief  Gets the most recent sensor event from the hardware status register.
+    @return Sensor status as a byte.
+ */
+uint8_t Adafruit_BMP280::getStatus(void) {
+  return read8(BMP280_REGISTER_STATUS);
+}
