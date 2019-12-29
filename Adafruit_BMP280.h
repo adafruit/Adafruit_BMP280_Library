@@ -21,10 +21,10 @@
 #ifndef __BMP280_H__
 #define __BMP280_H__
 
+#include "Adafruit_Sensor.h"
 #include "Arduino.h"
 #include <SPI.h>
 #include <Wire.h>
-#include "Adafruit_Sensor.h"
 
 /*!
  *  I2C ADDRESS/BITS/SETTINGS
@@ -85,31 +85,31 @@ typedef struct {
   int16_t dig_P9;  /**< dig_P9 cal register. */
 } bmp280_calib_data;
 
-
 class Adafruit_BMP280;
 
 /** Adafruit Unified Sensor interface for temperature component of BMP280 */
 class Adafruit_BMP280_Temp : public Adafruit_Sensor {
- public:
+public:
   Adafruit_BMP280_Temp(Adafruit_BMP280 *parent) { _theBMP280 = parent; }
-  bool getEvent(sensors_event_t*);
-  void getSensor(sensor_t*);
- private:
+  bool getEvent(sensors_event_t *);
+  void getSensor(sensor_t *);
+
+private:
   int _sensorID = 280;
   Adafruit_BMP280 *_theBMP280 = NULL;
 };
 
 /** Adafruit Unified Sensor interface for pressure component of BMP280 */
 class Adafruit_BMP280_Pressure : public Adafruit_Sensor {
- public:
+public:
   Adafruit_BMP280_Pressure(Adafruit_BMP280 *parent) { _theBMP280 = parent; }
-  bool getEvent(sensors_event_t*);
-  void getSensor(sensor_t*);
- private:
+  bool getEvent(sensors_event_t *);
+  void getSensor(sensor_t *);
+
+private:
   int _sensorID = 0;
   Adafruit_BMP280 *_theBMP280 = NULL;
 };
-
 
 /**
  * Driver for the Adafruit BMP280 barometric pressure sensor.
@@ -254,7 +254,5 @@ private:
   config _configReg;
   ctrl_meas _measReg;
 };
-
-
 
 #endif
