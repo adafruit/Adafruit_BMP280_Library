@@ -91,6 +91,7 @@ class Adafruit_BMP280;
 /** Adafruit Unified Sensor interface for temperature component of BMP280 */
 class Adafruit_BMP280_Temp : public Adafruit_Sensor {
  public:
+  Adafruit_BMP280_Temp(Adafruit_BMP280 *parent) { _theBMP280 = parent; }
   bool getEvent(sensors_event_t*);
   void getSensor(sensor_t*);
  private:
@@ -101,6 +102,7 @@ class Adafruit_BMP280_Temp : public Adafruit_Sensor {
 /** Adafruit Unified Sensor interface for pressure component of BMP280 */
 class Adafruit_BMP280_Pressure : public Adafruit_Sensor {
  public:
+  Adafruit_BMP280_Pressure(Adafruit_BMP280 *parent) { _theBMP280 = parent; }
   bool getEvent(sensors_event_t*);
   void getSensor(sensor_t*);
  private:
@@ -189,6 +191,9 @@ public:
   float readAltitude(float seaLevelhPa = 1013.25);
   float seaLevelForAltitude(float altitude, float atmospheric);
 
+  Adafruit_Sensor *getTemperatureSensor(void);
+  Adafruit_Sensor *getPressureSensor(void);
+
   // void takeForcedMeasurement();
   void setSampling(sensor_mode mode = MODE_NORMAL,
                    sensor_sampling tempSampling = SAMPLING_X16,
@@ -199,6 +204,9 @@ public:
 private:
   TwoWire *_wire; /**< Wire object */
   SPIClass *_spi; /**< SPI object */
+
+  Adafruit_BMP280_Temp *temp_sensor = NULL;
+  Adafruit_BMP280_Pressure *pressure_sensor = NULL;
 
   /** Encapsulates the config register */
   struct config {

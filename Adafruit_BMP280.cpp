@@ -31,6 +31,8 @@
 Adafruit_BMP280::Adafruit_BMP280(TwoWire *theWire)
     : _cs(-1), _mosi(-1), _miso(-1), _sck(-1) {
   _wire = theWire;
+  temp_sensor = new Adafruit_BMP280_Temp(this);
+  pressure_sensor = new Adafruit_BMP280_Pressure(this);
 }
 
 /*!
@@ -58,7 +60,9 @@ Adafruit_BMP280::Adafruit_BMP280(int8_t cspin, SPIClass *theSPI)
  */
 Adafruit_BMP280::Adafruit_BMP280(int8_t cspin, int8_t mosipin, int8_t misopin,
                                  int8_t sckpin)
-    : _cs(cspin), _mosi(mosipin), _miso(misopin), _sck(sckpin) {}
+    : _cs(cspin), _mosi(mosipin), _miso(misopin), _sck(sckpin) {
+
+}
 
 /*!
  *  Initialises the sensor.
@@ -426,6 +430,22 @@ void Adafruit_BMP280::reset(void) {
  */
 uint8_t Adafruit_BMP280::getStatus(void) {
   return read8(BMP280_REGISTER_STATUS);
+}
+
+/*!
+    @brief  Gets an Adafruit Unified Sensor object for the temp sensor component
+    @return Adafruit_Sensor pointer to temperature sensor
+ */
+Adafruit_Sensor *Adafruit_BMP280::getTemperatureSensor(void) {
+  return temp_sensor; 
+}
+
+/*!
+    @brief  Gets an Adafruit Unified Sensor object for the pressure sensor component
+    @return Adafruit_Sensor pointer to pressure sensor
+ */
+Adafruit_Sensor *Adafruit_BMP280::getPressureSensor(void) {
+  return pressure_sensor; 
 }
 
 /**************************************************************************/
