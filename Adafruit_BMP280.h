@@ -176,10 +176,10 @@ public:
 
   uint8_t getStatus(void);
   
+private:
   TwoWire *_wire; /**< Wire object */
   SPIClass *_spi; /**< SPI object */
 
-private:
   /** Encapsulates the config register */
   struct config {
     /** Inactive duration (standby time) in normal mode */
