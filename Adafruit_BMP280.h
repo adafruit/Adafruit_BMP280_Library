@@ -22,8 +22,8 @@
 #define __BMP280_H__
 
 #include "Arduino.h"
-#include <Wire.h>
 #include <SPI.h>
+#include <Wire.h>
 
 /*!
  *  I2C ADDRESS/BITS/SETTINGS
@@ -33,9 +33,10 @@
   (0x76)                     /**< Alternative I2C address for the sensor. */
 #define BMP280_CHIPID (0x58) /**< Default chip ID. */
 
-//  Forward declarations of Wire and SPI for board/variant combinations that don't have a default 'Wire' or 'SPI' 
-extern TwoWire Wire;  /**< Forward declaration of Wire object */
-extern SPIClass SPI;  /**< Forward declaration of SPI object */
+//  Forward declarations of Wire and SPI for board/variant combinations that
+//  don't have a default 'Wire' or 'SPI'
+extern TwoWire Wire; /**< Forward declaration of Wire object */
+extern SPIClass SPI; /**< Forward declaration of SPI object */
 
 /*!
  * Registers available on the sensor.
@@ -155,27 +156,21 @@ public:
   Adafruit_BMP280(int8_t cspin, int8_t mosipin, int8_t misopin, int8_t sckpin);
 
   bool begin(uint8_t addr = BMP280_ADDRESS, uint8_t chipid = BMP280_CHIPID);
+  void reset(void);
+  uint8_t getStatus(void);
 
   float readTemperature();
-
+  float readPressure(void);
+  float readAltitude(float seaLevelhPa = 1013.25);
   float seaLevelForAltitude(float altitude, float atmospheric);
 
-  float readPressure(void);
-
-  float readAltitude(float seaLevelhPa = 1013.25);
-
   // void takeForcedMeasurement();
-
   void setSampling(sensor_mode mode = MODE_NORMAL,
                    sensor_sampling tempSampling = SAMPLING_X16,
                    sensor_sampling pressSampling = SAMPLING_X16,
                    sensor_filter filter = FILTER_OFF,
                    standby_duration duration = STANDBY_MS_1);
 
-  void reset(void);
-
-  uint8_t getStatus(void);
-  
 private:
   TwoWire *_wire; /**< Wire object */
   SPIClass *_spi; /**< SPI object */
@@ -217,7 +212,6 @@ private:
   int16_t readS16_LE(byte reg);
 
   uint8_t _i2caddr;
-
 
   int32_t _sensorID;
   int32_t t_fine;
