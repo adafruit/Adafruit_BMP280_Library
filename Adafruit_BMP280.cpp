@@ -35,6 +35,11 @@ Adafruit_BMP280::Adafruit_BMP280(TwoWire *theWire)
   pressure_sensor = new Adafruit_BMP280_Pressure(this);
 }
 
+Adafruit_BMP280::~Adafruit_BMP280(void) {
+  delete temp_sensor;
+  delete pressure_sensor;
+}
+
 /*!
  * @brief  BMP280 constructor using hardware SPI
  * @param  cspin
