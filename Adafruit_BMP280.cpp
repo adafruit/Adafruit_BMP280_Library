@@ -477,6 +477,7 @@ void Adafruit_BMP280_Temp::getSensor(sensor_t *sensor) {
 /*!
     @brief  Gets the temperature as a standard sensor event
     @param  event Sensor event object that will be populated
+    @returns True
 */
 /**************************************************************************/
 bool Adafruit_BMP280_Temp::getEvent(sensors_event_t *event) {
@@ -516,6 +517,7 @@ void Adafruit_BMP280_Pressure::getSensor(sensor_t *sensor) {
 /*!
     @brief  Gets the pressure as a standard sensor event
     @param  event Sensor event object that will be populated
+    @returns True
 */
 /**************************************************************************/
 bool Adafruit_BMP280_Pressure::getEvent(sensors_event_t *event) {

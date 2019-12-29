@@ -90,6 +90,8 @@ class Adafruit_BMP280;
 /** Adafruit Unified Sensor interface for temperature component of BMP280 */
 class Adafruit_BMP280_Temp : public Adafruit_Sensor {
 public:
+  /** @brief Create an Adafruit_Sensor compatible object for the temp sensor
+      @param parent A pointer to the BMP280 class */
   Adafruit_BMP280_Temp(Adafruit_BMP280 *parent) { _theBMP280 = parent; }
   bool getEvent(sensors_event_t *);
   void getSensor(sensor_t *);
@@ -102,6 +104,8 @@ private:
 /** Adafruit Unified Sensor interface for pressure component of BMP280 */
 class Adafruit_BMP280_Pressure : public Adafruit_Sensor {
 public:
+  /** @brief Create an Adafruit_Sensor compatible object for the pressure sensor
+      @param parent A pointer to the BMP280 class */
   Adafruit_BMP280_Pressure(Adafruit_BMP280 *parent) { _theBMP280 = parent; }
   bool getEvent(sensors_event_t *);
   void getSensor(sensor_t *);
