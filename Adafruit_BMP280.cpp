@@ -73,14 +73,19 @@ Adafruit_BMP280::Adafruit_BMP280(int8_t cspin, int8_t mosipin, int8_t misopin,
  *         The I2C address to use (default = 0x77)
  *  @param chipid
  *         The expected chip ID (used to validate connection).
+ *  @param beginTwi
+ *         Call begin on the TwoWire object (default = true).
+ *         If false, call TwoWire::begin yourself before calling
+ *         this function.
  *  @return True if the init was successful, otherwise false.
  */
-bool Adafruit_BMP280::begin(uint8_t addr, uint8_t chipid) {
+bool Adafruit_BMP280::begin(uint8_t addr, uint8_t chipid, bool beginTwi) {
   _i2caddr = addr;
 
   if (_cs == -1) {
     // i2c
-    _wire->begin();
+    if (beginTwi)
+      _wire->begin();
   } else {
     digitalWrite(_cs, HIGH);
     pinMode(_cs, OUTPUT);
