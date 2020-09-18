@@ -402,7 +402,7 @@ float Adafruit_BMP280::waterBoilingPoint(float Pressure) {
   // Magnusformular for calculation of the boiling point of water at a given
   // pressure
   return (234.175 * log(Pressure/6.1078)) /
-	 (17.08085 - log(Pressure/6.1078));
+         (17.08085 - log(Pressure/6.1078));
 }
 
 /*!
