@@ -195,7 +195,7 @@ public:
   float readPressure(void);
   float readAltitude(float seaLevelhPa = 1013.25);
   float seaLevelForAltitude(float altitude, float atmospheric);
-  float WaterBoilingPoint(float Pressure);
+  float waterBoilingPoint(float Pressure);
 
   Adafruit_Sensor *getTemperatureSensor(void);
   Adafruit_Sensor *getPressureSensor(void);
