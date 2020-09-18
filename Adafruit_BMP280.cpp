@@ -400,13 +400,15 @@ float Adafruit_BMP280::seaLevelForAltitude(float altitude, float atmospheric) {
 
 /*!
     @brief  calculates the boiling point  of water by a given pressure
+    @param pressure pressure in hPa
+    @return temperature in °C
 */
 
-float Adafruit_BMP280::waterBoilingPoint(float Pressure) {
+float Adafruit_BMP280::waterBoilingPoint(float pressure) {
   // Magnusformular for calculation of the boiling point of water at a given
   // pressure
-  return (234.175 * log(Pressure / 6.1078)) /
-         (17.08085 - log(Pressure / 6.1078));
+  return (234.175 * log(pressure / 6.1078)) /
+         (17.08085 - log(pressure / 6.1078));
 }
 
 /*!
