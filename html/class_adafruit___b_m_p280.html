@@ -141,6 +141,9 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a55c1a78abf03a021abb297b3f35127ff"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7504522739c2e77f106ad0a193e3fe93"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_adafruit___b_m_p280.html#a7504522739c2e77f106ad0a193e3fe93">seaLevelForAltitude</a> (float altitude, float atmospheric)</td></tr>
 <tr class="separator:a7504522739c2e77f106ad0a193e3fe93"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7fb001dbd4b56c5fccfcbcec6b88b215"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_adafruit___b_m_p280.html#a7fb001dbd4b56c5fccfcbcec6b88b215">waterBoilingPoint</a> (float pressure)</td></tr>
+<tr class="memdesc:a7fb001dbd4b56c5fccfcbcec6b88b215"><td class="mdescLeft">&#160;</td><td class="mdescRight">calculates the boiling point of water by a given pressure  <a href="#a7fb001dbd4b56c5fccfcbcec6b88b215">More...</a><br /></td></tr>
+<tr class="separator:a7fb001dbd4b56c5fccfcbcec6b88b215"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a191f291cb5eb59777b6040571d42ca5f"><td class="memItemLeft" align="right" valign="top">Adafruit_Sensor *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_adafruit___b_m_p280.html#a191f291cb5eb59777b6040571d42ca5f">getTemperatureSensor</a> (void)</td></tr>
 <tr class="memdesc:a191f291cb5eb59777b6040571d42ca5f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets an Adafruit Unified Sensor object for the temp sensor component.  <a href="#a191f291cb5eb59777b6040571d42ca5f">More...</a><br /></td></tr>
 <tr class="separator:a191f291cb5eb59777b6040571d42ca5f"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -558,6 +561,33 @@ Public Member Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The approximate pressure in hPa </dd></dl>
+
+</div>
+</div>
+<a id="a7fb001dbd4b56c5fccfcbcec6b88b215"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7fb001dbd4b56c5fccfcbcec6b88b215">&#9670;&nbsp;</a></span>waterBoilingPoint()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float Adafruit_BMP280::waterBoilingPoint </td>
+          <td>(</td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>pressure</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>calculates the boiling point of water by a given pressure </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pressure</td><td>pressure in hPa </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>temperature in °C </dd></dl>
 
 </div>
 </div>
