@@ -481,8 +481,8 @@ void Adafruit_BMP280_Temp::getSensor(sensor_t *sensor) {
   sensor->sensor_id = _sensorID;
   sensor->type = SENSOR_TYPE_AMBIENT_TEMPERATURE;
   sensor->min_delay = 0;
-  sensor->max_value = -40.0; /* Temperature range -40 ~ +85 C  */
-  sensor->min_value = +85.0;
+  sensor->min_value = -40.0; /* Temperature range -40 ~ +85 C  */
+  sensor->max_value = +85.0;
   sensor->resolution = 0.01; /*  0.01 C */
 }
 
@@ -521,8 +521,8 @@ void Adafruit_BMP280_Pressure::getSensor(sensor_t *sensor) {
   sensor->sensor_id = _sensorID;
   sensor->type = SENSOR_TYPE_PRESSURE;
   sensor->min_delay = 0;
-  sensor->max_value = 300.0; /* 300 ~ 1100 hPa  */
-  sensor->min_value = 1100.0;
+  sensor->min_value = 300.0; /* 300 ~ 1100 hPa  */
+  sensor->max_value = 1100.0;
   sensor->resolution = 0.012; /* 0.12 hPa relative */
 }
 
