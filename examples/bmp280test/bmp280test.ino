@@ -32,9 +32,11 @@ void setup() {
   Serial.begin(9600);
   Serial.println(F("BMP280 test"));
 
+  //if (!bmp.begin(BMP280_ADDRESS_ALT, BMP280_CHIPID)) {
   if (!bmp.begin()) {
-    Serial.println(F("Could not find a valid BMP280 sensor, check wiring!"));
-    while (1);
+    Serial.println(F("Could not find a valid BMP280 sensor, check wiring or "
+                      "try a different address!"));
+    while (1) delay(10);
   }
 
   /* Default settings from datasheet. */
