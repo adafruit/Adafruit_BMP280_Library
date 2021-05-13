@@ -441,6 +441,12 @@ void Adafruit_BMP280::reset(void) {
 }
 
 /*!
+ *   Returns Sensor ID for diagnostics
+ *   @returns Sensor ID 0x61 for BME680, 0x60 for BME280, 0x56, 0x57, 0x58 for BMP280
+ */
+uint8_t Adafruit_BMP280::sensorID(void) { return read8(BMP280_REGISTER_CHIPID); };
+
+/*!
     @brief  Gets the most recent sensor event from the hardware status register.
     @return Sensor status as a byte.
  */
