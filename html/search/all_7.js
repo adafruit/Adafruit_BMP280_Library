@@ -10,6 +10,7 @@ var searchData=
   ['sensor_5ffilter',['sensor_filter',['../class_adafruit___b_m_p280.html#a7e817dd76c6b5c92b7f4166556bb3d4e',1,'Adafruit_BMP280']]],
   ['sensor_5fmode',['sensor_mode',['../class_adafruit___b_m_p280.html#ab28e689ef7620d2b9f0c9e03116dde8f',1,'Adafruit_BMP280']]],
   ['sensor_5fsampling',['sensor_sampling',['../class_adafruit___b_m_p280.html#a70f70d9f9c6c4c70eca412cd9909ac7e',1,'Adafruit_BMP280']]],
+  ['sensorid',['sensorID',['../class_adafruit___b_m_p280.html#addcb95213b3f19e3643286b35a647b9f',1,'Adafruit_BMP280']]],
   ['setsampling',['setSampling',['../class_adafruit___b_m_p280.html#a1a3d84395d208a5f21cbab211fda176e',1,'Adafruit_BMP280']]],
   ['spi',['SPI',['../_adafruit___b_m_p280_8h.html#a56953eb3affc2a9f56e1680bbc537bf7',1,'Adafruit_BMP280.h']]],
   ['standby_5fduration',['standby_duration',['../class_adafruit___b_m_p280.html#a145ce46b3996ff93ec743ff4f96594b3',1,'Adafruit_BMP280']]],
