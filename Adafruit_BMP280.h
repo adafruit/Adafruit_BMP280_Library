@@ -190,6 +190,7 @@ public:
   bool begin(uint8_t addr = BMP280_ADDRESS, uint8_t chipid = BMP280_CHIPID);
   void reset(void);
   uint8_t getStatus(void);
+  uint8_t sensorID(void);
 
   float readTemperature();
   float readPressure(void);
