@@ -50,6 +50,8 @@ Adafruit_BMP280::~Adafruit_BMP280(void) {
 Adafruit_BMP280::Adafruit_BMP280(int8_t cspin, SPIClass *theSPI)
     : _cs(cspin), _mosi(-1), _miso(-1), _sck(-1) {
   _spi = theSPI;
+  temp_sensor = new Adafruit_BMP280_Temp(this);
+  pressure_sensor = new Adafruit_BMP280_Pressure(this);
 }
 
 /*!
@@ -65,7 +67,10 @@ Adafruit_BMP280::Adafruit_BMP280(int8_t cspin, SPIClass *theSPI)
  */
 Adafruit_BMP280::Adafruit_BMP280(int8_t cspin, int8_t mosipin, int8_t misopin,
                                  int8_t sckpin)
-    : _cs(cspin), _mosi(mosipin), _miso(misopin), _sck(sckpin) {}
+    : _cs(cspin), _mosi(mosipin), _miso(misopin), _sck(sckpin) {
+  temp_sensor = new Adafruit_BMP280_Temp(this);
+  pressure_sensor = new Adafruit_BMP280_Pressure(this);
+}
 
 /*!
  *  Initialises the sensor.
