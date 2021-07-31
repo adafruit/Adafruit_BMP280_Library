@@ -209,7 +209,7 @@ public:
                    standby_duration duration = STANDBY_MS_1);
 
 private:
-  TwoWire *_wire; /**< Wire object */
+  TwoWire *_wire;                     /**< Wire object */
   Adafruit_I2CDevice *i2c_dev = NULL; ///< Pointer to I2C bus interface
   Adafruit_SPIDevice *spi_dev = NULL; ///< Pointer to SPI bus interface
 
@@ -256,7 +256,7 @@ private:
 
   int32_t _sensorID;
   int32_t t_fine;
-  //int8_t _cs, _mosi, _miso, _sck;
+  // int8_t _cs, _mosi, _miso, _sck;
   bmp280_calib_data _bmp280_calib;
   config _configReg;
   ctrl_meas _measReg;
