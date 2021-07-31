@@ -23,8 +23,8 @@
 
 #include "Adafruit_Sensor.h"
 #include "Arduino.h"
-#include <SPI.h>
-#include <Wire.h>
+#include <Adafruit_I2CDevice.h>
+#include <Adafruit_SPIDevice.h>
 
 /*!
  *  I2C ADDRESS/BITS/SETTINGS
@@ -209,8 +209,9 @@ public:
                    standby_duration duration = STANDBY_MS_1);
 
 private:
-  TwoWire *_wire; /**< Wire object */
-  SPIClass *_spi; /**< SPI object */
+  TwoWire *_wire;                     /**< Wire object */
+  Adafruit_I2CDevice *i2c_dev = NULL; ///< Pointer to I2C bus interface
+  Adafruit_SPIDevice *spi_dev = NULL; ///< Pointer to SPI bus interface
 
   Adafruit_BMP280_Temp *temp_sensor = NULL;
   Adafruit_BMP280_Pressure *pressure_sensor = NULL;
@@ -255,7 +256,7 @@ private:
 
   int32_t _sensorID;
   int32_t t_fine;
-  int8_t _cs, _mosi, _miso, _sck;
+  // int8_t _cs, _mosi, _miso, _sck;
   bmp280_calib_data _bmp280_calib;
   config _configReg;
   ctrl_meas _measReg;
