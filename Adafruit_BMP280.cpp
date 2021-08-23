@@ -34,8 +34,10 @@ Adafruit_BMP280::Adafruit_BMP280(TwoWire *theWire) {
 }
 
 Adafruit_BMP280::~Adafruit_BMP280(void) {
-  if (spi_dev) delete spi_dev;
-  if (i2c_dev) delete i2c_dev;
+  if (spi_dev)
+    delete spi_dev;
+  if (i2c_dev)
+    delete i2c_dev;
   delete temp_sensor;
   delete pressure_sensor;
 }
