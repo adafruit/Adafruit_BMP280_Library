@@ -34,6 +34,8 @@ Adafruit_BMP280::Adafruit_BMP280(TwoWire *theWire) {
 }
 
 Adafruit_BMP280::~Adafruit_BMP280(void) {
+  if (spi_dev) delete spi_dev;
+  if (i2c_dev) delete i2c_dev;
   delete temp_sensor;
   delete pressure_sensor;
 }
@@ -80,10 +82,14 @@ Adafruit_BMP280::Adafruit_BMP280(int8_t cspin, int8_t mosipin, int8_t misopin,
  */
 bool Adafruit_BMP280::begin(uint8_t addr, uint8_t chipid) {
   if (spi_dev == NULL) {
+    // I2C mode
+    if (i2c_dev)
+      delete i2c_dev;
     i2c_dev = new Adafruit_I2CDevice(addr, _wire);
     if (!i2c_dev->begin())
       return false;
   } else {
+    // SPI mode
     if (!spi_dev->begin())
       return false;
   }
