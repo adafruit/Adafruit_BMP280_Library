@@ -235,7 +235,8 @@ private:
   /** Encapsulates trhe ctrl_meas register */
   struct ctrl_meas {
     /** Initialize to power-on-reset state */
-    ctrl_meas() : osrs_t(SAMPLING_NONE), osrs_p(SAMPLING_NONE), mode(MODE_SLEEP) {}
+    ctrl_meas()
+        : osrs_t(SAMPLING_NONE), osrs_p(SAMPLING_NONE), mode(MODE_SLEEP) {}
     /** Temperature oversampling. */
     unsigned int osrs_t : 3;
     /** Pressure oversampling. */
