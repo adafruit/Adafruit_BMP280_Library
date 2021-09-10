@@ -218,6 +218,8 @@ private:
 
   /** Encapsulates the config register */
   struct config {
+    /** Initialize to power-on-reset state */
+    config() : t_sb(STANDBY_MS_1), filter(FILTER_OFF), none(0), spi3w_en(0) {}
     /** Inactive duration (standby time) in normal mode */
     unsigned int t_sb : 3;
     /** Filter settings */
@@ -232,6 +234,9 @@ private:
 
   /** Encapsulates trhe ctrl_meas register */
   struct ctrl_meas {
+    /** Initialize to power-on-reset state */
+    ctrl_meas()
+        : osrs_t(SAMPLING_NONE), osrs_p(SAMPLING_NONE), mode(MODE_SLEEP) {}
     /** Temperature oversampling. */
     unsigned int osrs_t : 3;
     /** Pressure oversampling. */
