@@ -96,7 +96,9 @@ bool Adafruit_BMP280::begin(uint8_t addr, uint8_t chipid) {
       return false;
   }
 
-  if (read8(BMP280_REGISTER_CHIPID) != chipid)
+  // check if sensor, i.e. the chip ID is correct
+  _sensorID = read8(BMP280_REGISTER_CHIPID);
+  if (_sensorID != chipid)
     return false;
 
   readCoefficients();
@@ -378,7 +380,7 @@ void Adafruit_BMP280::reset(void) {
  *   @returns 0x61 for BME680, 0x60 for BME280, 0x56, 0x57, 0x58 for BMP280
  */
 uint8_t Adafruit_BMP280::sensorID(void) {
-  return read8(BMP280_REGISTER_CHIPID);
+  return _sensorID;
 };
 
 /*!
