@@ -21,10 +21,12 @@
 #ifndef __BMP280_H__
 #define __BMP280_H__
 
+// clang-format off
 #include <Arduino.h>
 #include <Adafruit_Sensor.h>
 #include <Adafruit_I2CDevice.h>
 #include <Adafruit_SPIDevice.h>
+// clang-format on
 
 /*!
  *  I2C ADDRESS/BITS/SETTINGS
