@@ -12,7 +12,6 @@ var searchData=
   ['sensor_5fsampling',['sensor_sampling',['../class_adafruit___b_m_p280.html#a70f70d9f9c6c4c70eca412cd9909ac7e',1,'Adafruit_BMP280']]],
   ['sensorid',['sensorID',['../class_adafruit___b_m_p280.html#addcb95213b3f19e3643286b35a647b9f',1,'Adafruit_BMP280']]],
   ['setsampling',['setSampling',['../class_adafruit___b_m_p280.html#a1a3d84395d208a5f21cbab211fda176e',1,'Adafruit_BMP280']]],
-  ['spi',['SPI',['../_adafruit___b_m_p280_8h.html#a56953eb3affc2a9f56e1680bbc537bf7',1,'Adafruit_BMP280.h']]],
   ['standby_5fduration',['standby_duration',['../class_adafruit___b_m_p280.html#a145ce46b3996ff93ec743ff4f96594b3',1,'Adafruit_BMP280']]],
   ['standby_5fms_5f1',['STANDBY_MS_1',['../class_adafruit___b_m_p280.html#a145ce46b3996ff93ec743ff4f96594b3aaf77ff20e2b2eb57a99a8fcbeeca1780',1,'Adafruit_BMP280']]],
   ['standby_5fms_5f1000',['STANDBY_MS_1000',['../class_adafruit___b_m_p280.html#a145ce46b3996ff93ec743ff4f96594b3a5078ac311fcf6bfd36c1659d8b1f2a85',1,'Adafruit_BMP280']]],
