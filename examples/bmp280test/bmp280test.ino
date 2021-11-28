@@ -30,11 +30,11 @@ Adafruit_BMP280 bmp; // I2C
 
 void setup() {
   Serial.begin(9600);
-  while(!Serial);       // time to get serial running
+  while ( !Serial ) delay(100);   // wait for native usb
   Serial.println(F("BMP280 test"));
   unsigned status;
   //status = bmp.begin(BMP280_ADDRESS_ALT, BMP280_CHIPID);
-  status = bmp.begin(0x76);
+  status = bmp.begin();
   if (!status) {
     Serial.println(F("Could not find a valid BMP280 sensor, check wiring or "
                       "try a different address!"));
