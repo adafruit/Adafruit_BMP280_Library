@@ -256,7 +256,7 @@ private:
 
   uint8_t _i2caddr;
 
-  int32_t _sensorID;
+  int32_t _sensorID = 0;
   int32_t t_fine;
   // int8_t _cs, _mosi, _miso, _sck;
   bmp280_calib_data _bmp280_calib;
