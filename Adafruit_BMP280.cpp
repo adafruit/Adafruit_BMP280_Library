@@ -246,7 +246,7 @@ void Adafruit_BMP280::readCoefficients() {
 float Adafruit_BMP280::readTemperature() {
   int32_t var1, var2;
   if (!_sensorID)
-    return 0.0; // begin() not called yet
+    return NAN; // begin() not called yet
 
   int32_t adc_T = read24(BMP280_REGISTER_TEMPDATA);
   adc_T >>= 4;
@@ -274,7 +274,7 @@ float Adafruit_BMP280::readTemperature() {
 float Adafruit_BMP280::readPressure() {
   int64_t var1, var2, p;
   if (!_sensorID)
-    return 0.0; // begin() not called yet
+    return NAN; // begin() not called yet
 
   // Must be done first to get the t_fine variable set up
   readTemperature();
