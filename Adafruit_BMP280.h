@@ -21,10 +21,12 @@
 #ifndef __BMP280_H__
 #define __BMP280_H__
 
-#include "Adafruit_Sensor.h"
-#include "Arduino.h"
+// clang-format off
+#include <Arduino.h>
+#include <Adafruit_Sensor.h>
 #include <Adafruit_I2CDevice.h>
 #include <Adafruit_SPIDevice.h>
+// clang-format on
 
 /*!
  *  I2C ADDRESS/BITS/SETTINGS
@@ -33,11 +35,6 @@
 #define BMP280_ADDRESS_ALT                                                     \
   (0x76)                     /**< Alternative I2C address for the sensor. */
 #define BMP280_CHIPID (0x58) /**< Default chip ID. */
-
-//  Forward declarations of Wire and SPI for board/variant combinations that
-//  don't have a default 'Wire' or 'SPI'
-extern TwoWire Wire; /**< Forward declaration of Wire object */
-extern SPIClass SPI; /**< Forward declaration of SPI object */
 
 /*!
  * Registers available on the sensor.
@@ -260,7 +257,7 @@ private:
 
   uint8_t _i2caddr;
 
-  int32_t _sensorID;
+  int32_t _sensorID = 0;
   int32_t t_fine;
   // int8_t _cs, _mosi, _miso, _sck;
   bmp280_calib_data _bmp280_calib;

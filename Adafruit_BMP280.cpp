@@ -19,8 +19,7 @@
  *  BSD license, all text above must be included in any redistribution
  */
 
-#include "Adafruit_BMP280.h"
-#include "Arduino.h"
+#include <Adafruit_BMP280.h>
 
 /*!
  * @brief  BMP280 constructor using i2c
@@ -96,7 +95,9 @@ bool Adafruit_BMP280::begin(uint8_t addr, uint8_t chipid) {
       return false;
   }
 
-  if (read8(BMP280_REGISTER_CHIPID) != chipid)
+  // check if sensor, i.e. the chip ID is correct
+  _sensorID = read8(BMP280_REGISTER_CHIPID);
+  if (_sensorID != chipid)
     return false;
 
   readCoefficients();
@@ -124,6 +125,8 @@ void Adafruit_BMP280::setSampling(sensor_mode mode,
                                   sensor_sampling pressSampling,
                                   sensor_filter filter,
                                   standby_duration duration) {
+  if (!_sensorID)
+    return; // begin() not called yet
   _measReg.mode = mode;
   _measReg.osrs_t = tempSampling;
   _measReg.osrs_p = pressSampling;
@@ -242,6 +245,8 @@ void Adafruit_BMP280::readCoefficients() {
  */
 float Adafruit_BMP280::readTemperature() {
   int32_t var1, var2;
+  if (!_sensorID)
+    return NAN; // begin() not called yet
 
   int32_t adc_T = read24(BMP280_REGISTER_TEMPDATA);
   adc_T >>= 4;
@@ -268,6 +273,8 @@ float Adafruit_BMP280::readTemperature() {
  */
 float Adafruit_BMP280::readPressure() {
   int64_t var1, var2, p;
+  if (!_sensorID)
+    return NAN; // begin() not called yet
 
   // Must be done first to get the t_fine variable set up
   readTemperature();
@@ -376,9 +383,7 @@ void Adafruit_BMP280::reset(void) {
  *   Returns Sensor ID for diagnostics
  *   @returns 0x61 for BME680, 0x60 for BME280, 0x56, 0x57, 0x58 for BMP280
  */
-uint8_t Adafruit_BMP280::sensorID(void) {
-  return read8(BMP280_REGISTER_CHIPID);
-};
+uint8_t Adafruit_BMP280::sensorID(void) { return _sensorID; };
 
 /*!
     @brief  Gets the most recent sensor event from the hardware status register.
