@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['waterboilingpoint',['waterBoilingPoint',['../class_adafruit___b_m_p280.html#a7fb001dbd4b56c5fccfcbcec6b88b215',1,'Adafruit_BMP280']]]
+  ['takeforcedmeasurement',['takeForcedMeasurement',['../class_adafruit___b_m_p280.html#a7a839614ae7954e2a4c1045b0b3d39a6',1,'Adafruit_BMP280']]]
 ];
