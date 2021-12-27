@@ -352,28 +352,25 @@ float Adafruit_BMP280::waterBoilingPoint(float pressure) {
 }
 
 /*!
- *  @brief  Take a new measurement (only possible in forced mode)
- *  !!!todo!!!
+    @brief  Take a new measurement (only possible in forced mode)
+    @return true if successful, otherwise false
  */
-/*
-void Adafruit_BMP280::takeForcedMeasurement()
-{
-    if (!_sensorID)
-      return;  // begin() not called yet
-    // If we are in forced mode, the BME sensor goes back to sleep after each
-    // measurement and we need to set it to forced mode once at this point, so
-    // it will take the next measurement and then return to sleep again.
-    // In normal mode simply does new measurements periodically.
-    if (_measReg.mode == MODE_FORCED) {
-        // set to forced mode, i.e. "take next measurement"
-        write8(BMP280_REGISTER_CONTROL, _measReg.get());
-        // wait until measurement has been completed, otherwise we would read
-        // the values from the last measurement
-        while (read8(BMP280_REGISTER_STATUS) & 0x08)
-                delay(1);
-    }
+bool Adafruit_BMP280::takeForcedMeasurement() {
+  // If we are in forced mode, the BME sensor goes back to sleep after each
+  // measurement and we need to set it to forced mode once at this point, so
+  // it will take the next measurement and then return to sleep again.
+  // In normal mode simply does new measurements periodically.
+  if (_measReg.mode == MODE_FORCED) {
+    // set to forced mode, i.e. "take next measurement"
+    write8(BMP280_REGISTER_CONTROL, _measReg.get());
+    // wait until measurement has been completed, otherwise we would read
+    // the values from the last measurement
+    while (read8(BMP280_REGISTER_STATUS) & 0x08)
+      delay(1);
+    return true;
+  }
+  return false;
 }
-*/
 
 /*!
  *  @brief  Resets the chip via soft reset
