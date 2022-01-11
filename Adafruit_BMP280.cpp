@@ -33,9 +33,9 @@ Adafruit_BMP280::Adafruit_BMP280(TwoWire *theWire) {
 }
 
 Adafruit_BMP280::~Adafruit_BMP280(void) {
-  if (spi_dev)
+  if (spi_dev == nullptr)
     delete spi_dev;
-  if (i2c_dev)
+  if (i2c_dev == nullptr)
     delete i2c_dev;
   if (temp_sensor == nullptr)
     delete temp_sensor;
