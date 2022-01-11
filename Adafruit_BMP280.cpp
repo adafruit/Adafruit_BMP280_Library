@@ -37,7 +37,7 @@ Adafruit_BMP280::~Adafruit_BMP280(void) {
     delete spi_dev;
   if (i2c_dev)
     delete i2c_dev;
-  if (temp_sensor == nullptr) 
+  if (temp_sensor == nullptr)
     delete temp_sensor;
   if (pressure_sensor == nullptr)
     delete pressure_sensor;
