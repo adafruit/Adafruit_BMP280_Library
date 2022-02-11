@@ -32,17 +32,6 @@ Adafruit_BMP280::Adafruit_BMP280(TwoWire *theWire) {
   pressure_sensor = new Adafruit_BMP280_Pressure(this);
 }
 
-Adafruit_BMP280::~Adafruit_BMP280(void) {
-  if (spi_dev)
-    delete spi_dev;
-  if (i2c_dev)
-    delete i2c_dev;
-  if (temp_sensor)
-    delete temp_sensor;
-  if (pressure_sensor)
-    delete pressure_sensor;
-}
-
 /*!
  * @brief  BMP280 constructor using hardware SPI
  * @param  cspin
@@ -73,6 +62,17 @@ Adafruit_BMP280::Adafruit_BMP280(int8_t cspin, int8_t mosipin, int8_t misopin,
   spi_dev = new Adafruit_SPIDevice(cspin, sckpin, misopin, mosipin);
   temp_sensor = new Adafruit_BMP280_Temp(this);
   pressure_sensor = new Adafruit_BMP280_Pressure(this);
+}
+
+Adafruit_BMP280::~Adafruit_BMP280(void) {
+  if (spi_dev)
+    delete spi_dev;
+  if (i2c_dev)
+    delete i2c_dev;
+  if (temp_sensor)
+    delete temp_sensor;
+  if (pressure_sensor)
+    delete pressure_sensor;
 }
 
 /*!
