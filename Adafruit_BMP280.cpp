@@ -243,7 +243,7 @@ void Adafruit_BMP280::readCoefficients() {
 
 /*!
  * Reads the temperature from the device.
- * @return The temperature in degress celcius.
+ * @return The temperature in degrees celsius.
  */
 float Adafruit_BMP280::readTemperature() {
   int32_t var1, var2;
