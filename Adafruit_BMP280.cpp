@@ -324,7 +324,7 @@ float Adafruit_BMP280::readAltitude(float seaLevelhPa) {
 }
 
 /*!
- * Calculates the pressure at sea level (QFH) from the specified altitude,
+ * Calculates the pressure at sea level (QNH) from the specified altitude,
  * and atmospheric pressure (QFE).
  * @param  altitude      Altitude in m
  * @param  atmospheric   Atmospheric pressure in hPa
